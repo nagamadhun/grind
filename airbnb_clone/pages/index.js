@@ -1,5 +1,6 @@
 import Banner from '@/components/Banner'
 import Header from '@/components/Header'
+import LargeCard from '@/components/LargeCard'
 import MediumCard from '@/components/MediumCard'
 import SmallCard from '@/components/SmallCard'
 import Head from 'next/head'
@@ -23,12 +24,17 @@ export default function Home({exploreData,cardsData}) {
       </section>
       <section>
         <h2 className='mt-3 text-4xl font-semibold'>Live Anywhere</h2>
-        <div className=' mt-3 flex space-x-3 overflow-scroll scrollbar-hide p-3 ml-3'>
+        <div className=' mt-3 flex space-x-3 overflow-scroll scrollbar-hide p-3 -ml-3'>
         {cardsData.map(i => (
           <MediumCard key={i.img} img={i.img} title={i.title} />
           ))}
         </div>
       </section>
+      <LargeCard img='https://links.papareact.com/4cj' 
+      title = 'The Greatest Outdoors'
+      description = 'Wishlists curated by Airbnb'
+      buttonText = 'Get Inspired'
+      />
     </main>
   </div>
   )
