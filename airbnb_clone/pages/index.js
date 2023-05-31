@@ -1,9 +1,11 @@
 import Banner from '@/components/Banner'
 import Header from '@/components/Header'
+import MediumCard from '@/components/MediumCard'
 import SmallCard from '@/components/SmallCard'
+import Head from 'next/head'
 
 
-export default function Home({exploreData}) {
+export default function Home({exploreData,cardsData}) {
   return (
   <div>
     <Header />
@@ -18,7 +20,14 @@ export default function Home({exploreData}) {
            distance={distance}/>
         ))}
         </div>
-       
+      </section>
+      <section>
+        <h2 className='mt-3 text-4xl font-semibold'>Live Anywhere</h2>
+        <div className=' mt-3 flex space-x-3 overflow-scroll scrollbar-hide p-3 ml-3'>
+        {cardsData.map(i => (
+          <MediumCard key={i.img} img={i.img} title={i.title} />
+          ))}
+        </div>
       </section>
     </main>
   </div>
@@ -29,9 +38,14 @@ export default function Home({exploreData}) {
 export async function getStaticProps(){
   const res  = await fetch('https://www.jsonkeeper.com/b/4G1G')
   const exploreData = await res.json()
+
+  const cardsData  = await fetch('https://www.jsonkeeper.com/b/VHHT').
+  then((r) => r.json())
+
   return {
     props:{
-      exploreData
+      exploreData,
+      cardsData
     }
   }
 }
