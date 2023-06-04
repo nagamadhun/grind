@@ -15,8 +15,13 @@ function Header() {
   const selectionRange = {
     startDate: startDate,
     endDate: endDate,
-    key: "Selection"
+    key: "selection"
 
+  }
+
+  const handleSelect = (ranges) => {
+    setStartDate(ranges.selection.startDate)
+    setEndDate(ranges.selection.endDate)
   }
 
   return (
@@ -50,7 +55,9 @@ function Header() {
           <UserCircleIcon className="h-6" />
         </div>
       </div>
-      {searchInput && <DateRangePicker ranges={[selectionRange]} />}
+      {searchInput && <DateRangePicker ranges={[selectionRange]} miinDate = {new Date()}
+      rangeColors={["#FD5B61"]} onChange={handleSelect} className="flex col-span-3 mx-auto"
+      />}
     </header>
   );
 }
