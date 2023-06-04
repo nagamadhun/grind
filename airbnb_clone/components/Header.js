@@ -37,6 +37,9 @@ function Header() {
           <UserCircleIcon className="h-6" />
         </div>
       </div>
+      {searchInput && (
+        <div></div>
+      )}
     </header>
   );
 }
